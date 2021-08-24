@@ -1,0 +1,25 @@
+
+# cancel
+- cancel
+- please cancel
+- stop that
+
+# help
+- help
+- I need help
+- please help me
+- can you help
+
+# weather
+- get weather
+- weather
+- how is the weather
+- what is the weather
+> Define a regex zipcode entity. Any time LUIS sees a five digit number, it will flag it as 'zipcode' entity.
+$ zipcode : /[0-9]{5}/
+
+# graph
+- Let's loging to the graph
+- Graph
+- Access the graph
+- Can I access the graph

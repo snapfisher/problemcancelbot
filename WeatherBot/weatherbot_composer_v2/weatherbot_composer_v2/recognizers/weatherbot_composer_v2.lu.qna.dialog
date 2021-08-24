@@ -1,0 +1,6 @@
+{
+  "$kind": "Microsoft.CrossTrainedRecognizerSet",
+  "recognizers": [
+    "weatherbot_composer_v2.lu"
+  ]
+}

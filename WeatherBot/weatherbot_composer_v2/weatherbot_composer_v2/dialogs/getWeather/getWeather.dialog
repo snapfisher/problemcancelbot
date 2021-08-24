@@ -1,0 +1,129 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "EbQK3b",
+    "name": "getWeather",
+    "description": "Get the current weather conditions"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "mLGpc2"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "IOIzTF"
+          },
+          "activity": "${SendActivity_IOIzTF()}"
+        },
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "3LtcXa"
+          },
+          "property": "user.zipcode",
+          "value": "=@zipcode"
+        },
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "TgqRTm"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": true,
+          "prompt": "${TextInput_Prompt_TgqRTm()}",
+          "unrecognizedPrompt": "${TextInput_UnrecognizedPrompt_TgqRTm()}",
+          "invalidPrompt": "${TextInput_InvalidPrompt_TgqRTm()}",
+          "property": "user.zipcode",
+          "outputFormat": "=trim(this.value)",
+          "validations": [
+            "length(this.value) == 5"
+          ],
+          "defaultValue": "98052"
+        },
+        {
+          "$kind": "Microsoft.TelemetryTrackEventAction",
+          "$designer": {
+            "id": "Z0Zf8d"
+          },
+          "eventName": "ZipcodeChosen",
+          "properties": {
+            "ZipCode": "${user.zipcode}"
+          }
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "XPnwUe"
+          },
+          "method": "GET",
+          "url": "https://api.openweathermap.org/data/2.5/weather?zip=${user.zipcode}&units=imperial&appid=566a497a9912f0cdc750c5a04a9a5257",
+          "resultProperty": "dialog.api_response",
+          "responseType": "json",
+          "contentType": "application/json"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "l4E5N8"
+          },
+          "condition": "dialog.api_response.statusCode == 200",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "t3lBm3"
+              },
+              "activity": "${SendActivity_t3lBm3()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "ZYhp4C"
+              },
+              "activity": "${SendActivity_ZYhp4C()}"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.DeleteProperty",
+          "$designer": {
+            "id": "WDSncV"
+          },
+          "property": "user.zipcode"
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnCancelDialog",
+      "$designer": {
+        "id": "szMW2B",
+        "name": "Dialog cancelled (Cancel dialog event)"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "lM5udx"
+          },
+          "activityProcessed": true,
+          "dialog": "Graph"
+        }
+      ]
+    }
+  ],
+  "generator": "getWeather.lg",
+  "recognizer": "getWeather.lu.qna",
+  "id": "getWeather"
+}

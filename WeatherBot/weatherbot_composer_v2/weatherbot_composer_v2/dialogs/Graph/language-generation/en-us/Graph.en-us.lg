@@ -1,0 +1,6 @@
+[import](common.lg)
+
+# SendActivity_dO6PfR()
+[Activity
+    Text = Graph is not supported in this tenant
+]

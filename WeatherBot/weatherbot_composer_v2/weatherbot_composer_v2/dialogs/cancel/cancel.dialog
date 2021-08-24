@@ -1,0 +1,92 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "DYQqfA",
+    "name": "cancel",
+    "description": "cancelling"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "8pKxZx"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.ConfirmInput",
+          "$designer": {
+            "id": "ZQiPuC"
+          },
+          "defaultLocale": "en-us",
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": true,
+          "allowInterruptions": false,
+          "prompt": "${ConfirmInput_Prompt_ZQiPuC()}",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "choiceOptions": {
+            "includeNumbers": true,
+            "inlineOrMore": ", or ",
+            "inlineOr": " or "
+          },
+          "property": "user.confirmed"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "8MTZvS"
+          },
+          "activity": "${SendActivity_8MTZvS()}"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "eazHhb"
+          },
+          "condition": "user.confirmed == True",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "gKf9wT"
+              },
+              "activity": "${SendActivity_gKf9wT()}"
+            },
+            {
+              "$kind": "Microsoft.DeleteProperty",
+              "$designer": {
+                "id": "WNGP3T"
+              },
+              "property": "user.cancel"
+            },
+            {
+              "$kind": "Microsoft.CancelAllDialogs",
+              "$designer": {
+                "id": "r23hgF"
+              },
+              "activityProcessed": true
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "fDmgnJ"
+              },
+              "activity": "${SendActivity_fDmgnJ()}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "cancel.lg",
+  "recognizer": "cancel.lu.qna",
+  "id": "cancel"
+}

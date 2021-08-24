@@ -1,0 +1,9 @@
+[import](common.lg)
+
+# SendActivity_OxFQsU()
+[Activity
+    Text = ${SendActivity_OxFQsU_text()}
+]
+
+# SendActivity_OxFQsU_text()
+- He is where we go when we cancel

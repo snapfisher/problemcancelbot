@@ -1,0 +1,22 @@
+{
+  "weatherbot_composer_v2.en-us": {
+    "rootDialog": true,
+    "triggers": {
+      "weather": [
+        "getWeather.en-us"
+      ],
+      "cancel": [
+        "cancel.en-us"
+      ],
+      "help": [
+        "help.en-us"
+      ],
+      "": [
+        "help.en-us"
+      ],
+      "graph": [
+        "Graph.en-us"
+      ]
+    }
+  }
+}
