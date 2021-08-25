@@ -66,7 +66,7 @@
             "id": "XPnwUe"
           },
           "method": "GET",
-          "url": "https://api.openweathermap.org/data/2.5/weather?zip=${user.zipcode}&units=imperial&appid=566a497a9912f0cdc750c5a04a9a5257",
+          "url": "https://api.openweathermap.org/data/2.5/weather?zip=${user.zipcode}&units=imperial&appid=xxxxxxx",
           "resultProperty": "dialog.api_response",
           "responseType": "json",
           "contentType": "application/json"
